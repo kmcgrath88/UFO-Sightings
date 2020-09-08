@@ -53,10 +53,12 @@ var button = d3.select('#filter-btn');
 // Select form 
 var form = d3.select('.form-group');
 
-// Create event handlers
-button.on('click', runEnter);
-form.on('submit', runEnter);
+var new_data = {};
 
+// Create event handlers
+//button.on('click', runEnter);
+//form.on('submit', runEnter);
+d3.selectAll('.filter').on('change', runEnter);
 // Event handler function for the form
 function runEnter(){ 
 
@@ -64,36 +66,21 @@ function runEnter(){
     d3.event.preventDefault();
 
     // Select the input element and get the raw HTML node
-    // var inputElement = d3.select(this).select('input');
     var changedElement = d3.select(this).select('input');
     console.log(changedElement);
     var inputValue = changedElement.property('value');
-    var inputElement = changedElement.attr('id')
-    var new_data = {};
+    var inputElement = changedElement.attr('id');
+    
 
     if (inputValue){
         new_data[inputElement] = inputValue;
     }
 
-    // else{
-    //     delete new_data[]
-    // }
-
-    // var inputElementDate = d3.select(this).attr('id'); //.text();
-    // // Get the value property of the input element
-    // var inputValueDate = inputElementDate.property('value');
-
-    // // Select the input element and get the raw HTML node
-    // // var inputElement = d3.select(this).select('input');
-    // var inputElementCity = d3.select('#city');
-    // // Get the value property of the input element
-    // var inputValueCity = inputElementDate.property('value');
-
-    // // var filterID = .att to pull datetime, city, etc
+    else{
+        delete new_data[inputElement];
+    }
 
     
-    // new_data[inputElementDate] = inputValueDate;
-    // new_data[inputElementCity] = inputValueCity;
     console.log(new_data);
 
     console.log(inputValue);
@@ -105,25 +92,26 @@ function runEnter(){
 
 
 function filter_Data(){
+    //console.log(new_data)
+    var filteredData = tableData
 // Filter by date
 Object.entries(new_data).forEach(([key,value]) => {
-    filteredData = tableData.filter(ufo_sighting => ufo_sighting[key] === value);
+    filteredData = filteredData.filter(ufo_sighting => ufo_sighting[key] === value);
 });
 
-    console.log(filteredData);
-
+    //console.log(filteredData);
 
     tbody.html('')
 
     filteredData.forEach(function(ufo){
-    console.log(ufo);
+    //console.log(ufo);
      
     // Use d3 to append one table row tr for each ufo object
     var row = tbody.append('tr');
 
     // Use object entries to console.log each ufo value
     Object.entries(ufo).forEach(function([key, value]){
-        console.log(key,value);
+        //console.log(key,value);
     
     // Use d3 to append 1 cell per ufo value 
     // (datetime, city, state, country, shape, durationMinutes, comments)
@@ -135,3 +123,21 @@ Object.entries(new_data).forEach(([key,value]) => {
     
     });
 })};
+
+
+
+// function run enter
+// var inputElementDate = d3.select(this).attr('id'); //.text();
+    // // Get the value property of the input element
+    // var inputValueDate = inputElementDate.property('value');
+
+    // // Select the input element and get the raw HTML node
+    // // var inputElement = d3.select(this).select('input');
+    // var inputElementCity = d3.select('#city');
+    // // Get the value property of the input element
+    // var inputValueCity = inputElementDate.property('value');
+
+    // // var filterID = .att to pull datetime, city, etc
+
+    // new_data[inputElementDate] = inputValueDate;
+    // new_data[inputElementCity] = inputValueCity;

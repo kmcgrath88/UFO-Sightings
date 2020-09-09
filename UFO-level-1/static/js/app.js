@@ -5,36 +5,37 @@ var tableData = data;
 var tbody = d3.select('tbody');
 
 // Loop through data and console.log each weather ufo object
-// tableData.forEach(function(ufo){
-//     console.log(ufo);
+tableData.forEach(function(ufo){
+    console.log(ufo);
 
-//     // Use d3 to append one table row tr for each ufo object
-//     var row = tbody.append('tr');
+    // Use d3 to append one table row tr for each ufo object
+    var row = tbody.append('tr');
 
-//     // Use object entries to console.log each ufo value
-//     Object.entries(ufo).forEach(function([key, value]){
-//         console.log(key,value);
+    // Use object entries to console.log each ufo value
+    Object.entries(ufo).forEach(function([key, value]){
+        console.log(key,value);
     
-//     // Use d3 to append 1 cell per ufo value 
-//     // (datetime, city, state, country, shape, durationMinutes, comments)
-//     var cell = row.append('td');
+    // Use d3 to append 1 cell per ufo value 
+    // (datetime, city, state, country, shape, durationMinutes, comments)
+    var cell = row.append('td');
 
-//     // Use d3 to update each cell's text with ufo values
-//     // (datetime, city, state, country, shape, durationMinutes, comments)
-//     cell.text(value);
+    // Use d3 to update each cell's text with ufo values
+    // (datetime, city, state, country, shape, durationMinutes, comments)
+    cell.text(value);
     
-//     });
+    });
 
-// });
+});
+
 
 // Shorter way:
-tableData.forEach((ufo) => {
-    var row = tbody.append('tr');
-    Object.entries(ufo).forEach(([key,value])=>{
-        var cell = row.append('td');
-        cell.text(value);
-    });
-});
+// tableData.forEach((ufo) => {
+//     var row = tbody.append('tr');
+//     Object.entries(ufo).forEach(([key,value])=>{
+//         var cell = row.append('td');
+//         cell.text(value);
+//     });
+// });
 
 
 
@@ -87,6 +88,8 @@ function runEnter(){
     cell.text(value);
     
     });
+
+    
 })};
 
 

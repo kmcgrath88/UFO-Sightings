@@ -1,8 +1,6 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
-
 // Get reference to the table body
 var tbody = d3.select('tbody');
 
@@ -44,9 +42,6 @@ tableData.forEach(function(ufo){
 // listen for events and search through the date/time column to find rows that 
 // match user input.
 
-// Questions:
-// date form in html?
-
 // Select filter table button
 var button = d3.select('#filter-btn');
 
@@ -56,9 +51,8 @@ var form = d3.select('.form-group');
 var new_data = {};
 
 // Create event handlers
-//button.on('click', runEnter);
-//form.on('submit', runEnter);
 d3.selectAll('.filter').on('change', runEnter);
+
 // Event handler function for the form
 function runEnter(){ 
 
@@ -81,10 +75,10 @@ function runEnter(){
     }
 
     
-    console.log(new_data);
+    // console.log(new_data);
 
-    console.log(inputValue);
-    console.log(tableData);
+    // console.log(inputValue);
+    // console.log(tableData);
 
     filter_Data();
  
@@ -100,7 +94,6 @@ Object.entries(new_data).forEach(([key,value]) => {
 });
 
     //console.log(filteredData);
-
     tbody.html('')
 
     filteredData.forEach(function(ufo){
@@ -124,20 +117,3 @@ Object.entries(new_data).forEach(([key,value]) => {
     });
 })};
 
-
-
-// function run enter
-// var inputElementDate = d3.select(this).attr('id'); //.text();
-    // // Get the value property of the input element
-    // var inputValueDate = inputElementDate.property('value');
-
-    // // Select the input element and get the raw HTML node
-    // // var inputElement = d3.select(this).select('input');
-    // var inputElementCity = d3.select('#city');
-    // // Get the value property of the input element
-    // var inputValueCity = inputElementDate.property('value');
-
-    // // var filterID = .att to pull datetime, city, etc
-
-    // new_data[inputElementDate] = inputValueDate;
-    // new_data[inputElementCity] = inputValueCity;

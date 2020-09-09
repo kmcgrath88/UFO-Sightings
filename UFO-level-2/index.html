@@ -33,6 +33,20 @@
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
                 <form>
+                  <!-- drop down attempt
+                  <div class="dropdown">
+                    <button onclick="runEnter()" class="dropbtn">Dropdown</button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterData()">
+                      <a href="#about">About</a>
+                      <a href="#base">Base</a>
+                      <a href="#blog">Blog</a>
+                      <a href="#contact">Contact</a>
+                      <a href="#custom">Custom</a>
+                      <a href="#support">Support</a>
+                      <a href="#tools">Tools</a>
+                    </div>
+                  </div> -->
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
@@ -40,7 +54,20 @@
                         <input class="form-control" id="datetime" type="text" placeholder="1/1/2010">
                       </li>
                       <li class="filter list-group-item">
+                        <label for="date">Enter a City</label>
                         <input class="form-control" id="city" type="text" placeholder="phoenix">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a State</label>
+                        <input class="form-control" id="state" type="text" placeholder="ca">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a Country</label>
+                        <input class="form-control" id="country" type="text" placeholder="us">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a Shape</label>
+                        <input class="form-control" id="shape" type="text" placeholder="triangle">
                       </li>
                     </ul>
                   </div>

@@ -8,13 +8,20 @@ var tbody = d3.select('tbody');
 tableData.forEach(function(ufo){
     console.log(ufo);
 
+    
     // Use d3 to append one table row tr for each ufo object
     var row = tbody.append('tr');
 
     // Use object entries to console.log each ufo value
     Object.entries(ufo).forEach(function([key, value]){
         console.log(key,value);
-    
+
+        if (key === 'state'|| key === 'country'){
+            value = value.toUpperCase();
+        }
+        else if (key === 'city'){
+            value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+        }
     // Use d3 to append 1 cell per ufo value 
     // (datetime, city, state, country, shape, durationMinutes, comments)
     var cell = row.append('td');
@@ -79,6 +86,14 @@ function runEnter(){
     Object.entries(ufo).forEach(function([key, value]){
     console.log(key,value);
     
+    if (key === 'state'|| key === 'country'){
+        value = value.toUpperCase();
+    }
+    else if (key === 'city'){
+        value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+    }
+
+
     // Use d3 to append 1 cell per ufo value 
     // (datetime, city, state, country, shape, durationMinutes, comments)
     var cell = row.append('td');
@@ -91,6 +106,7 @@ function runEnter(){
 
     
 })};
+
 
 
 

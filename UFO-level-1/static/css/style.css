@@ -83,6 +83,7 @@ select {
   min-width: 70px;
 }
 
+
 .loader {
   margin-top: 50px;
 }
@@ -150,7 +151,7 @@ select {
     display: none;
   }
 
-  #table-area tr td:first-child {
+  #table-area tr td:first-child{
     font-size: 1.8em;
     font-weight: bold;
     background: #1b3146;

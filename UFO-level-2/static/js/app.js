@@ -1,53 +1,46 @@
-// from data.js
-var tableData = data;
+//-----LEVEL 2-----//
+// Complete all of Level 1 criteria.
+
+// Creating new variable from data.js
+var tableData = data
 
 // Get reference to the table body
 var tbody = d3.select('tbody');
 
-// Loop through data and console.log each weather ufo object
-tableData.forEach(function(ufo){
-    console.log(ufo);
+// Loop through data
+tableData.forEach((ufo) => {
 
     // Use d3 to append one table row tr for each ufo object
     var row = tbody.append('tr');
 
     // Use object entries to console.log each ufo value
-    Object.entries(ufo).forEach(function([key, value]){
+    Object.entries(ufo).forEach(([key,value])=>{
         console.log(key,value);
-    
-    // Use d3 to append 1 cell per ufo value 
-    // (datetime, city, state, country, shape, durationMinutes, comments)
-    var cell = row.append('td');
 
-    // Use d3 to update each cell's text with ufo values
-    // (datetime, city, state, country, shape, durationMinutes, comments)
-    cell.text(value);
-    
+        // Formatting the data in the table
+        if (key === 'state'|| key === 'country'){
+            value = value.toUpperCase();
+        }
+        else if (key === 'city'){
+            value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+        };
+
+        // Use d3 to append 1 cell per ufo value 
+        // (datetime, city, state, country, shape, durationMinutes, comments)
+        var cell = row.append('td');
+
+        // Use d3 to update each cell's text with ufo values
+        // (datetime, city, state, country, shape, durationMinutes, comments)
+        cell.text(value);
     });
-
 });
 
-// Shorter way:
-// tableData.forEach((ufo) => {
-//     var row = tbody.append('tr');
-//     Object.entries(ufo).forEach(([key,value])=>{
-//         var cell = row.append('td');
-//         cell.text(value);
-//     });
-// });
 
+// Using multiple input tags and/or select dropdowns, write JavaScript code so the user can to 
+// set multiple filters and search for UFO sightings using the following criteria based on the 
+// table columns: date/time, city, state, country, shape
 
-
-//Use a date form in your HTML document and write JavaScript code that will 
-// listen for events and search through the date/time column to find rows that 
-// match user input.
-
-// Select filter table button
-var button = d3.select('#filter-btn');
-
-// Select form 
-var form = d3.select('.form-group');
-
+// Dictionary for filtered data
 var new_data = {};
 
 // Create event handlers
@@ -61,11 +54,10 @@ function runEnter(){
 
     // Select the input element and get the raw HTML node
     var changedElement = d3.select(this).select('input');
-    console.log(changedElement);
     var inputValue = changedElement.property('value');
     var inputElement = changedElement.attr('id');
-    
 
+    // Adding input values to dictionary if it exists
     if (inputValue){
         new_data[inputElement] = inputValue;
     }
@@ -74,46 +66,55 @@ function runEnter(){
         delete new_data[inputElement];
     }
 
-    
-    // console.log(new_data);
-
-    // console.log(inputValue);
-    // console.log(tableData);
-
+    // Calling filter data function
     filter_Data();
- 
 };
 
 
+// Creating function to filter data based on search input
 function filter_Data(){
-    //console.log(new_data)
+
+    // Creating new variable for filtered data
     var filteredData = tableData
-// Filter by date
-Object.entries(new_data).forEach(([key,value]) => {
-    filteredData = filteredData.filter(ufo_sighting => ufo_sighting[key] === value);
-});
 
-    //console.log(filteredData);
-    tbody.html('')
+    // Using object entries to loop through input keys console.log each ufo filtered value
+    Object.entries(new_data).forEach(([key,value]) => {
+        filteredData = filteredData.filter(ufo_sighting => ufo_sighting[key] === value)
+        console.log(filteredData);
 
-    filteredData.forEach(function(ufo){
-    //console.log(ufo);
-     
-    // Use d3 to append one table row tr for each ufo object
-    var row = tbody.append('tr');
+        // Clearing the table body
+        tbody.html('')
+        
+        // Looping through the filtered data and appending it to the table
+        filteredData.forEach(function(ufo){
+        
+            // Use d3 to append one table row tr for each ufo object
+            var row = tbody.append('tr');
 
-    // Use object entries to console.log each ufo value
-    Object.entries(ufo).forEach(function([key, value]){
-        //console.log(key,value);
+            // Using object entries to loop through input keys and to console.log each ufo value
+            Object.entries(ufo).forEach(function([key, value]){
+                console.log(key,value);
+            
+                // Use d3 to append 1 cell per ufo value 
+                // (datetime, city, state, country, shape, durationMinutes, comments)
+                var cell = row.append('td');
+
+                // Use d3 to update each cell's text with ufo values
+                // (datetime, city, state, country, shape, durationMinutes, comments)
+                cell.text(value);
     
-    // Use d3 to append 1 cell per ufo value 
-    // (datetime, city, state, country, shape, durationMinutes, comments)
-    var cell = row.append('td');
-
-    // Use d3 to update each cell's text with ufo values
-    // (datetime, city, state, country, shape, durationMinutes, comments)
-    cell.text(value);
-    
+            });
+        });
     });
-})};
+};
 
+    
+    // trying something...
+    // Object.entries(filteredData, new_data).forEach(([key,value]) => {
+    // if (key === 'state'|| key === 'country'){
+    //     value = value.toUpperCase();
+    // }
+    // else if (key === 'city'){
+    //     value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+    // };
+    // });

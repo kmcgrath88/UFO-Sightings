@@ -38,7 +38,6 @@ tableData.forEach((ufo) => {
 });
 
 
-
 //Use a date form in your HTML document and write JavaScript code that will 
 // listen for events and search through the date/time column to find rows that 
 // match user input.
@@ -68,8 +67,8 @@ function runEnter(){
     // Filtering table to match input value
     var filteredData = tableData.filter(ufo_sighting => ufo_sighting.datetime === inputValue);
 
-    // Clearing the table
-    tbody.html('')
+    // Clearing the table body
+    tbody.html('');
 
     // Looping through the filtered data and appending it to the table
     filteredData.forEach(function(ufo){
@@ -87,8 +86,7 @@ function runEnter(){
             }
             else if (key === 'city'){
                 value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
-            }
-
+            };
 
             // Use d3 to append 1 cell per ufo value 
             // (datetime, city, state, country, shape, durationMinutes, comments)
@@ -99,8 +97,6 @@ function runEnter(){
             cell.text(value);
     
         });
-
-    
     });
 };
 

@@ -3,8 +3,10 @@
 Thanks for checking out my project's repo! By downloading this repo, you'll be able to search for information on UFO sightings.<br>
 In the UFO-level-1 folder, you'll be able to search for UFO sightings based on dates from 1/1/2010 to 1/13/2010 in the filter search. Simply open the index.html file and get started! A screenshot of an example search is below:<br>
 ![alt text](UFO-level-1/static/images/Screenshot_1.png) <br>
+<br>
 
-In the UFO-level-2 folder, you'll be able to search for UFO sightings based on date, city, state, country, or shape in the filter search. Simply open the index.html file and get started!A screenshot of an example search is below:<br> 
+In the UFO-level-2 folder, you'll be able to search for UFO sightings based on date, city, state, country, and/or shape in the filter search. Simply open the index.html file and get started! A screenshot of an example search is below:<br> 
+![alt text](UFO-level-2/static/images/Screenshot_2.png) <br>
 <br>
 
 ### Instructions for Challenge
@@ -22,7 +24,7 @@ You can handle this... right? The planet Earth needs to know what we have found!
 
 #### Level 2: Multiple Search Categories (Optional)
 - Complete all of Level 1 criteria.<br>
-- Using multiple input tags and/or select dropdowns, write JavaScript code so the user can to set multiple filters and search for UFO sightings using the following criteria based on the table columns:<br>
+- Using multiple input tags, write JavaScript code so the user can set multiple filters and search for UFO sightings using the following criteria based on the table columns:<br>
   - date/time<br>
   - city<br>
   - state<br>

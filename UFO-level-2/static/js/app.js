@@ -38,7 +38,7 @@ tableData.forEach((ufo) => {
 
 // Using multiple input tags and/or select dropdowns, write JavaScript code so the user can to 
 // set multiple filters and search for UFO sightings using the following criteria based on the 
-// table columns: date/time, city, state, country, shape
+// table columns: date, city, state, country, shape.
 
 // Dictionary for filtered data
 var new_data = {};
@@ -79,7 +79,7 @@ function filter_Data(){
 
     // Using object entries to loop through input keys console.log each ufo filtered value
     Object.entries(new_data).forEach(([key,value]) => {
-        filteredData = filteredData.filter(ufo_sighting => ufo_sighting[key] === value)
+        filteredData = filteredData.filter(ufo_sighting => ufo_sighting[key] === value.toLowerCase())
         console.log(filteredData);
 
         // Clearing the table body
@@ -94,7 +94,13 @@ function filter_Data(){
             // Using object entries to loop through input keys and to console.log each ufo value
             Object.entries(ufo).forEach(function([key, value]){
                 console.log(key,value);
-            
+
+                if (key === 'state'|| key === 'country'){
+                    value = value.toUpperCase();
+                }
+                else if (key === 'city'){
+                    value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+                };
                 // Use d3 to append 1 cell per ufo value 
                 // (datetime, city, state, country, shape, durationMinutes, comments)
                 var cell = row.append('td');
@@ -109,12 +115,3 @@ function filter_Data(){
 };
 
     
-    // trying something...
-    // Object.entries(filteredData, new_data).forEach(([key,value]) => {
-    // if (key === 'state'|| key === 'country'){
-    //     value = value.toUpperCase();
-    // }
-    // else if (key === 'city'){
-    //     value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
-    // };
-    // });

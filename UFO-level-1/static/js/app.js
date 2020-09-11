@@ -46,17 +46,19 @@ tableData.forEach((ufo) => {
 var button = d3.select('#filter-btn');
 
 // Select form 
-var form = d3.select('.form-group');
+var form = d3.select('form'); // '.form-group'
 
 // Create event handlers
 button.on('click', runEnter);
-form.on('submit', runEnter);
+form.on('change', runEnter);
 
 // Event handler function for the form
 function runEnter(){ 
+    
 
     // Prevent page from refreshing
     d3.event.preventDefault();
+    
 
     // Select input element
     var inputElement = d3.select('#datetime');
@@ -78,7 +80,7 @@ function runEnter(){
 
         // Using object entries to loop through input keys and to console.log each ufo value
         Object.entries(ufo).forEach(function([key, value]){
-            console.log(key,value);
+            //console.log(key,value);
     
             // Formatting the filtered values in the table
             if (key === 'state'|| key === 'country'){

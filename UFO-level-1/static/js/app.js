@@ -69,37 +69,45 @@ function runEnter(){
 
     // Clearing the table body.
     tbody.html('');
-
-    // Looping through the filtered data and appending it to the table.
-    filteredData.forEach(function(ufo){
-     
-        // Use d3 to append one table row tr for each ufo object.
-        var row = tbody.append('tr');
-
-        // Using object entries to loop through input keys and to console.log each ufo value.
-        Object.entries(ufo).forEach(function([key, value]){
-            console.log(key,value);
     
-            // Formatting the filtered values in the table.
-            if (key === 'state'|| key === 'country'){
-                value = value.toUpperCase();
-            }
-            else if (key === 'city'){
-                value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
-            };
+    // If data is found, run loop
+    if (filteredData != 0){
 
-            // Use d3 to append 1 cell per ufo value 
-            // (datetime, city, state, country, shape, durationMinutes, comments).
-            var cell = row.append('td');
+        // Looping through the filtered data and appending it to the table.
+        filteredData.forEach(function(ufo){
+            
+            // Use d3 to append one table row tr for each ufo object.
+            var row = tbody.append('tr');
 
-            // Use d3 to update each cell's text with ufo values
-            // (datetime, city, state, country, shape, durationMinutes, comments).
-            cell.text(value);
-    
+            // Using object entries to loop through input keys and to console.log each ufo value.
+            Object.entries(ufo).forEach(function([key, value]){
+                console.log(key,value);
+                
+                    // Formatting the filtered values in the table.
+                    if (key === 'state'|| key === 'country'){
+                        value = value.toUpperCase();
+                    }
+                    else if (key === 'city'){
+                        value = value.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+                    };
+
+                    // Use d3 to append 1 cell per ufo value 
+                    // (datetime, city, state, country, shape, durationMinutes, comments).
+                    var cell = row.append('td');
+
+                    // Use d3 to update each cell's text with ufo values
+                    // (datetime, city, state, country, shape, durationMinutes, comments).
+                    cell.text(value);       
+                });
         });
-    });
-};
+    }
+    
+    // Else print: no results found
+    else{
+        window.alert('No results found.');
+    };
 
+};
 
 
 

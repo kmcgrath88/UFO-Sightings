@@ -1,7 +1,6 @@
 # UFO Sightings
 
-Thanks for checking out my project's repo! By downloading this repo, you'll be able to search for information on UFO sightings.<br>
-<br>
+Thanks for checking out my project's repo! By downloading this repo, you'll be able to search for information on UFO sightings.
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
